@@ -16,9 +16,13 @@ function App() {
     return jsonLocalStorage.getItem("favoriteCats") || []
   })
 
-  useEffect(() => async function setInitialImage() {
+  async function setInitialImage() {
     const initialImage = await getCatImageWithText("Hello!");
-    setCatImageURL(initialImage);
+    setCatImageURL(initialImage);    
+  }
+
+  useEffect(() => {
+    setInitialImage();
   }, [])
 
   const title = counter ? `${counter}번째 고양이 가라사대` : "고양이 가라사대";
